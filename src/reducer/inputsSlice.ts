@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { States } from "../../interfaces";
-const initialState: States.AppState["inputs"] = {
+
+export interface InputsState {
+  title: string;
+  description: string;
+}
+
+const initialState: InputsState = {
   title: "",
   description: "",
-  firstZoneComponent: [{ id: 1 }, { id: 2 }],
-  secondZoneComponent: [],
-  checkbox: false,
-  dropdown: "",
 };
 
 export const inputsSlice = createSlice({
-  name: "inputs",
+  name: "counter",
   initialState,
   reducers: {
     changeTitle: (state, action) => {
@@ -19,13 +20,9 @@ export const inputsSlice = createSlice({
     changeDescription: (state, action) => {
       state.description = action.payload;
     },
-  
   },
 });
 
-export const {
-  changeTitle,
-  changeDescription,
-} = inputsSlice.actions;
+export const { changeTitle, changeDescription } = inputsSlice.actions;
 
 export default inputsSlice.reducer;

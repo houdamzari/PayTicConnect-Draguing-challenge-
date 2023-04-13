@@ -1,11 +1,12 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
-import { changeDescription } from "../reducer/inputsSlice";
+import { changeDescription } from "../../reducer/inputsSlice";
+import { States } from "../../../interfaces";
 const TextArea: React.FC = () => {
   const dispatch = useDispatch();
-  const { description } = useSelector((state: any) => state.inputs);
-  const [, drag] = useDrag(() => ({
+  const { description } = useSelector((state: States.AppState) => state.inputs);
+  const [{ isDragging }, drag] = useDrag(() => ({
     type: "input",
     item: { id: 2 },
     collect: (monitor) => ({
@@ -15,7 +16,9 @@ const TextArea: React.FC = () => {
   return (
     <div
       ref={drag}
-      className="flex flex-col justify-start items-start gap-[12px]"
+      className={`flex flex-col justify-start items-start gap-[12px] ${
+        isDragging ? "border-2 border-secondary-color opacity-[0.5]" : ""
+      }`}
     >
       <h5 className="font-bold text-md">Description:</h5>
       <textarea
