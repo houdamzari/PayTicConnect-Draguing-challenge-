@@ -1,10 +1,42 @@
-import React from "react";
-export interface TextInputProps {
+import { ReactNode } from "react";
+export interface TableElement {
+  id: number;
   title: string;
-  setTitle: React.Dispatch<React.SetStateAction<string>>;
+  description: string;
+  status: string;
+  auto: string;
 }
 
-export interface TextAreaProps {
-  description: string;
-  setDescription: React.Dispatch<React.SetStateAction<string>>;
+export namespace States {
+  interface StoredComponentState {
+    id: number;
+  }
+  interface ComponentState {
+    id: number;
+    el: JSX.Element;
+  }
+  interface AppState {
+    inputs: {
+      title: string;
+      description: string;
+      firstZoneComponent: StoredComponentState[] | never[];
+      secondZoneComponent: StoredComponentState[] | never[];
+      checkbox: boolean;
+      dropdown: string;
+    };
+  }
+}
+export namespace Props {
+  interface TableProps {
+    data: TableElement[];
+  }
+  interface ButtonProps {
+    handleSave: () => void;
+  }
+  interface DragZoneProps {
+    children: ReactNode;
+    containerRef: ConnectDropTarget;
+    headerText: string;
+    isOver: boolean;
+  }
 }
