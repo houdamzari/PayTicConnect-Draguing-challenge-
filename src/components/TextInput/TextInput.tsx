@@ -2,10 +2,11 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { changeTitle } from "../../reducer/inputsSlice";
+import { States } from "../../interfaces";
 const TextInput: React.FC = () => {
   const dispatch = useDispatch();
-  const { title } = useSelector((state: any) => state.inputs);
-  const [, drag] = useDrag(() => ({
+  const { title } = useSelector((state: States.AppState) => state.inputs);
+  const [{ isDragging }, drag] = useDrag(() => ({
     type: "input",
     item: { id: 1 },
     collect: (monitor) => ({
@@ -13,7 +14,11 @@ const TextInput: React.FC = () => {
     }),
   }));
   return (
-    <div ref={drag} className="flex flex-col justify-start items-start  gap-[12px]"
+    <div
+      ref={drag}
+      className={`flex flex-col justify-start items-start gap-[12px] ${
+        isDragging ? "border-2 border-secondary-color opacity-[0.5]" : ""
+      }`}
     >
       <h5 className="font-bold text-md">Title:</h5>
       <input

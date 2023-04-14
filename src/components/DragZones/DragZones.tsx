@@ -1,41 +1,46 @@
-import React, { useState } from "react";
-import {DropZone ,Button , Table } from "../../components";
-import { useSelector } from "react-redux";
+import React from "react";
 import { useDragDrop } from "../../hooks/useDragDrop";
+import {DropZone ,Button , Table , TextInput , TextArea , Checkbox, DropDown } from "../../components";
+import { useSelector } from "react-redux";
+import { States } from "../../interfaces";
+import useRenderZone from "../hooks/useRenderZone";
+import useSaveData from "../hooks/useSaveData";
 const DragZones: React.FC = () => {
-  const { title, description } = useSelector((state: any) => state.inputs);
-  const { firstDrop, secondDrop, firstZoneComponent, secondZoneComponent } =
-    useDragDrop();
-
-  const [data, setData] = useState<any>([]);
-  const handleSave = () => {
-    const titleCondition = secondZoneComponent.some(
-      (zone: any) => zone.id === 1
-    );
-    const descCondition = secondZoneComponent.some(
-      (zone: any) => zone.id === 2
-    );
-    const id = data.length + 1;
-    setData([
-      ...data,
-      {
-        id: id,
-        title: titleCondition ? title : "",
-        description: descCondition ? description : "",
-      },
-    ]);
-  };
+  const components: States.ComponentState[] = [
+    { id: 1, el: <TextInput /> },
+    { id: 2, el: <TextArea /> },
+    { id: 3, el: <DropDown /> },
+    { id: 4, el: <Checkbox /> },
+  ];
+  const inputs = useSelector((state: States.AppState) => state.inputs);
+  const {
+    status,
+    status2,
+    firstDrop,
+    secondDrop,
+    firstZoneComponent,
+    secondZoneComponent,
+  } = useDragDrop();
+  const renderFirstZone = useRenderZone(components, firstZoneComponent);
+  const renderSecondZone = useRenderZone(components, secondZoneComponent);
+  const { data, handleSave } = useSaveData(secondZoneComponent, inputs);
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <div className="flex flex-row justify-center items-center  gap-8 p-8">
-        <DropZone headerText="Drag To Right" containerRef={firstDrop}>
-          {firstZoneComponent.map((component) => component.el)}
+    <div className=" flex flex-col items-center justify-center">
+      <div className="flex flex-row justify-center flex-wrap h-full  items-center mobile:px-0 gap-8 p-8 ">
+        <DropZone
+          headerText="Drag To Right"
+          isOver={status.isOver}
+          containerRef={firstDrop}
+        >
+          <>{renderFirstZone}</>
         </DropZone>
-        <DropZone headerText="Click On Save" containerRef={secondDrop}>
-          {secondZoneComponent.map(
-            (component: { id: number; el: JSX.Element }) => component?.el
-          )}
+        <DropZone
+          headerText="Click On Save"
+          isOver={status2.isOver}
+          containerRef={secondDrop}
+        >
+          <>{renderSecondZone}</>
         </DropZone>
       </div>
       <Button handleSave={handleSave} />
