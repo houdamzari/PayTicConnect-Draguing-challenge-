@@ -23,7 +23,6 @@ export const inputsSlice = createSlice({
       state.checkbox = !state.checkbox;
     },
     changeDropdown: (state, action) => {
-      console.log(action.payload);
       state.dropdown = action.payload;
     },
     addElementFirstZone: (state, action) => {
@@ -33,7 +32,6 @@ export const inputsSlice = createSlice({
       ];
     },
     addElementSecondZone: (state, action) => {
-      console.log(action.payload);
       state.secondZoneComponent = [
         ...state.secondZoneComponent,
         ...action.payload,

@@ -19,7 +19,7 @@ const Checkbox: React.FC = () => {
       ref={drag}
       className={`flex flex-row justify-start items-center gap-[13px] ${
         isDragging ? "border-2 border-secondary-color opacity-[0.5]" : ""
-      }`}
+      } mb-10`}
     >
       <div
         className={`relative border border-secondary-color w-[24px] h-[24px] flex justify-center items-center ${
@@ -35,7 +35,7 @@ const Checkbox: React.FC = () => {
         />
         <img src={check} alt="check" />
       </div>
-      <h5 className="text-base font-bold">Post Automatically</h5>
+      <h5 className="text-base font-bold ">Post Automatically</h5>
     </div>
   );
 };

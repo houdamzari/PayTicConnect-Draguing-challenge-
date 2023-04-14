@@ -1,60 +1,21 @@
 import React from "react";
-import { Props, TableElement } from "../../interfaces";
+import { Props } from "../../interfaces";
+import TableRow from "./TableRow";
+import TableHeader from "./TableHeader";
+import TableHead from "./TableHead";
 
-const Table: React.FC<Props.TableProps> = ({ data }) => {
+const Table: React.FC<Props.TableProps> = ({ children}) => {
   return (
     <div className="w-full flex justify-center mobile:px-0 px-[50px] mb-14 border-0">
       <table className="shadow-lg w-full mt-8">
-        <thead className="w-full">
-          <tr className="flex flex-row w-full rounded-t-[28px] bg-secondary-color">
-            <th className="w-full px-4 py-2 mobile:text-xs border border-r-white">
-              ID
-            </th>
-            <th className="w-full px-4 py-2 mobile:text-xs  border border-r-white">
-              TITLE
-            </th>
-            <th className="w-full px-4 py-2 mobile:text-xs border border-r-white">
-              DESCRIPTION
-            </th>
-            <th className="w-full px-4 py-2 mobile:text-xs  border border-r-white">
-              STATUS
-            </th>
-            <th className="w-full px-4 py-2 mobile:text-xs border">
-              AUTO POST
-            </th>
-          </tr>
-        </thead>
-        <tbody className="w-full">
-          {data.map((tableElement: TableElement) => (
-            <tr
-              className={`flex flex-row w-full items-center ${
-                tableElement.id % 2 === 0
-                  ? "bg-table-color"
-                  : "bg-primary-color"
-              }`}
-              key={tableElement.id}
-            >
-              <td className=" px-4 py-2 w-full mobile:text-xs text-center border-r border-r-white">
-                {tableElement.id}
-              </td>
-              <td className="px-4 py-2 w-full mobile:text-xs text-center border-r border-r-white">
-                {tableElement.title}
-              </td>
-              <td className="px-4 py-2 w-full mobile:text-xs text-center ">
-                {tableElement.description}
-              </td>
-              <td className="px-4 py-2 w-full mobile:text-xs text-center ">
-                {tableElement.status}
-              </td>
-              <td className="px-4 py-2 w-full mobile:text-xs text-center ">
-                {tableElement.auto}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+       {children}
       </table>
     </div>
   );
 };
 
-export default Table;
+export default Object.assign(Table, {
+  Head: TableHead,
+  Header: TableHeader,
+  Row: TableRow
+})

@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { States } from "../interfaces";
 
 const useRenderZone = (
@@ -11,7 +11,7 @@ const useRenderZone = (
         (component: States.StoredComponentState) => component.id === id
       );
     const list = components?.map((component: States.ComponentState) =>
-      condition(component.id) ? component.el : null
+      condition(component.id) ? (<div key={component.id}>{ component.el } </div>)  : null
     );
 
     return list;

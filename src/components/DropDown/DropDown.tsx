@@ -44,7 +44,7 @@ const DropDown: React.FC = () => {
           <img src={arrow} alt="arrow" />
         </div>
         {open && (
-          <div className="absolute top-[80px] p-[21px] flex flex-col gap-[20px] z-[99999] bg-primary-color w-full h-full">
+          <div className="absolute top-[80px] p-[21px] flex flex-col gap-[20px] z-[99999] bg-primary-color w-full shadow-xl h-fit">
             <p className="cursor-pointer" onClick={(e) => handleDropdown(e)}>
               Allow Comments
             </p>

@@ -28,7 +28,8 @@ export namespace States {
 }
 export namespace Props {
   interface TableProps {
-    data: TableElement[];
+    data?: TableElement[];
+    children?: ReactNode;
   }
   interface ButtonProps {
     handleSave: () => void;
@@ -38,5 +39,11 @@ export namespace Props {
     containerRef: ConnectDropTarget;
     headerText: string;
     isOver: boolean;
+  }
+  interface TableRowProps {
+    children: ReactNode;
+    className?: String
+  }
+  interface TableHeaderProps extends TableRowProps {
   }
 }
