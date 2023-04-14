@@ -1,7 +1,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 PayTicConnect Challenge ></a>
+# 📖 PayTicConnect Challenge 
 
 ## 🛠 Built With
 
@@ -48,7 +48,7 @@ Example command:
 
 ## 👥 Author
 
-- -👤 **Houda MZARI**
+  👤 **Houda MZARI**
 
 - -- GitHub: [@houdamzari](https://github.com/houdamzari)
 
