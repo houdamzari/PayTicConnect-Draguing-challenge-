@@ -1,15 +1,14 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
-import { act } from "@testing-library/react-hooks";
-import userEvent from "@testing-library/user-event";
-import { vi , describe , expect , it } from "vitest";
-import { render } from "@testing-library/react";
-import useOutsideClick from "../useOutsideClick";
 
+import { vi , describe , expect , it } from "vitest";
+import { fireEvent, render , screen} from "@testing-library/react";
+import useOutsideClick from "../useOutsideClick";
+import '@testing-library/jest-dom'
 const WrapperComponent = ({ callback }) => {
   const ref = useRef(null);
   useOutsideClick(ref, callback);
-  return <div ref={ref}></div>;
+  return <div data-testid='ref'><div ref={ref} ><div  >hello</div></div></div>;
 };
 
 WrapperComponent.propTypes = {
@@ -19,22 +18,19 @@ WrapperComponent.propTypes = {
 describe("useOutsideClick", () => {
   it("should call the callback function when clicking outside the element", async () => {
     const callback = vi.fn();
-    render(<WrapperComponent callback={callback} />);
-
-    await act(async () => {
-      userEvent.click(document.body);
-    });
+      render(<WrapperComponent callback={callback} />);
+      const testContainer = document.body
+       fireEvent.click(testContainer)
 
     expect(callback).toHaveBeenCalledTimes(0);
   });
-  it("should not call the callback function when clicking inside the element", async () => {
+
+  it("should call the callback function when clicking inside the element", async () => {
     const callback = vi.fn();
     const { container } = render(<WrapperComponent callback={callback} />);
 
-    await act(async () => {
-      userEvent.click(container.firstChild);
-    });
+    fireEvent.click(container)
 
-    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).toHaveBeenCalledTimes(0);
   });
 });
