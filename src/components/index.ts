@@ -5,7 +5,7 @@ export { default as TextArea } from "./TextArea/TextArea";
 export { default as Table } from "./Table/Table";
 export { default as DropZone } from "./DropZone/DropZone";
 export { default as DropDown } from "./DropDown/DropDown";
-export { default as CheckBox } from "./CheckBox/Checkbox";
+export { default as CheckBox } from "./CheckBox/CheckBox";
 export { default as TableRow } from "./Table/TableRow";
 export { default as DataTable } from "./Table/DataTable";
 

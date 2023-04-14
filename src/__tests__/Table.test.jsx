@@ -1,6 +1,6 @@
 import React from "react";
 import { test, expect } from "vitest";import { render } from "@testing-library/react";
-import Table from "../Table";
+import {DataTable} from "../components";
 import "@testing-library/jest-dom";
 const sampleData = [
   {
@@ -20,7 +20,7 @@ const sampleData = [
 ];
 
 test("Table should render and display the correct data", () => {
-  const { getByText } = render(<Table data={sampleData} />);
+  const { getByText } = render(<DataTable data={sampleData} />);
 
   sampleData.forEach((dataItem) => {
     const title = getByText(dataItem.title);

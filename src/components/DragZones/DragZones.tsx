@@ -1,6 +1,6 @@
 import React from "react";
 import { useDragDrop } from "../../hooks/useDragDrop";
-import {DropZone ,Button , DataTable , TextInput , TextArea , CheckBox as Checkbox, DropDown } from "../../components";
+import {DropZone ,Button , DataTable , TextInput , TextArea , CheckBox as CheckBox, DropDown } from "../../components";
 import { useSelector } from "react-redux";
 import { States } from "../../interfaces";
 import useRenderZone from "../../hooks/useRenderZone";
@@ -10,7 +10,7 @@ const DragZones: React.FC = () => {
     { id: 1, el: <TextInput /> },
     { id: 2, el: <TextArea /> },
     { id: 3, el: <DropDown /> },
-    { id: 4, el: <Checkbox /> },
+    { id: 4, el: <CheckBox /> },
   ];
   const inputs = useSelector((state: States.AppState) => state.inputs);
   const {

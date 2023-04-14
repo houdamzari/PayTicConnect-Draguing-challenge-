@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
+import PropTypes from "prop-types";
 import { act } from "@testing-library/react-hooks";
 import userEvent from "@testing-library/user-event";
-import { vi } from "vitest";
+import { vi , describe , expect , it } from "vitest";
 import { render } from "@testing-library/react";
 import useOutsideClick from "../useOutsideClick";
 
@@ -10,6 +11,11 @@ const WrapperComponent = ({ callback }) => {
   useOutsideClick(ref, callback);
   return <div ref={ref}></div>;
 };
+
+WrapperComponent.propTypes = {
+  callback: PropTypes.func.isRequired,
+};
+
 describe("useOutsideClick", () => {
   it("should call the callback function when clicking outside the element", async () => {
     const callback = vi.fn();

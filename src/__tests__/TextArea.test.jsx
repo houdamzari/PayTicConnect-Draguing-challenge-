@@ -4,8 +4,9 @@ import "@testing-library/jest-dom";
 import { DndProvider } from "react-dnd";
 import { TouchBackend } from "react-dnd-touch-backend";
 import { Provider } from "react-redux";
-import { store } from "../../store/store";
-import TextArea from "../TextArea";
+import { store } from "../store/store";
+import {TextArea} from "../components";
+
 test("TextInput should render and handle change event", async () => {
   const { getByPlaceholderText } = render(
     <Provider store={store}>

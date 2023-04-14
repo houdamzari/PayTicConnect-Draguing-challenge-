@@ -1,5 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
 import useRenderZone from "../useRenderZone";
+import { describe , expect , it } from "vitest";
 
 describe("useRenderZone", () => {
   it("should render only components that match the zoneComponents", () => {

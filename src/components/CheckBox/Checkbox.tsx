@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeCheckbox } from "../../reducer/inputsSlice";
 import check from "../../assets/check.svg";
 import { States } from "../../interfaces";
-const Checkbox: React.FC = () => {
+const CheckBox: React.FC = () => {
   const dispatch = useDispatch();
   const { checkbox } = useSelector((state: States.AppState) => state.inputs);
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -40,4 +40,4 @@ const Checkbox: React.FC = () => {
   );
 };
 
-export default Checkbox;
+export default CheckBox;

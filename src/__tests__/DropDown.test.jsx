@@ -1,9 +1,9 @@
 import React from "react";
 import { test, expect } from "vitest";
 import { render, fireEvent } from "@testing-library/react";
-import DropDown from "../DropDown";
+import {DropDown} from "../components";
 import { Provider } from "react-redux";
-import { store } from "../../store/store";
+import { store } from "../store/store";
 import { DndProvider } from "react-dnd";
 import { TouchBackend } from "react-dnd-touch-backend";
 import "@testing-library/jest-dom";
