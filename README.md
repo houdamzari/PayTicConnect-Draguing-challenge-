@@ -50,7 +50,7 @@ Example command:
 
   👤 **Houda MZARI**
 
-- -- GitHub: [@houdamzari](https://github.com/houdamzari)
+  -- GitHub: [@houdamzari](https://github.com/houdamzari)
 
   -- LinkedIn: [@houdamzari](https://www.linkedin.com/in/houda-mzari-2304401b1/)
 
