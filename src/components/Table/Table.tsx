@@ -1,34 +1,60 @@
 import React from "react";
+import { Props, TableElement } from "../../interfaces";
 
-function Table({ data }: any) {
+const Table: React.FC<Props.TableProps> = ({ data }) => {
   return (
-    <div>
-      <table className="shadow-lg mt-8">
-        <thead>
-          <tr className="flex flex-row rounded-t-[28px] bg-secondary-color">
-            <th className="px-[83px] py-[24px] border border-r-white">ID</th>
-            <th className="px-[83px] py-[24px] border border-r-white">TITLE</th>
-            <th className="px-[83px] py-[24px]">DESCRIPTION</th>
+    <div className="w-full flex justify-center mobile:px-0 px-[50px] mb-14">
+      <table className="shadow-lg w-full mt-8">
+        <thead className="w-full">
+          <tr className="flex flex-row w-full rounded-t-[28px] bg-secondary-color">
+            <th className="w-full px-4 py-2 mobile:text-xs border border-r-white">
+              ID
+            </th>
+            <th className="w-full px-4 py-2 mobile:text-xs  border border-r-white">
+              TITLE
+            </th>
+            <th className="w-full px-4 py-2 mobile:text-xs border border-r-white">
+              DESCRIPTION
+            </th>
+            <th className="w-full px-4 py-2 mobile:text-xs  border border-r-white">
+              STATUS
+            </th>
+            <th className="w-full px-4 py-2 mobile:text-xs border">
+              AUTO POST
+            </th>
           </tr>
         </thead>
-        <tbody>
-          {data.map((p: any) => (
-            <tr className="flex flex-row items-center" key={p.id}>
-              <div className="w-[184px] px-[83px] py-[24px] border-r border-r-white">
-                {p.id}
-              </div>
-              <div className="w-[208.5px] px-[83px] py-[24px] border-r border-r-white">
-                {p.title}
-              </div>
-              <div className="w-[270px] px-[83px] py-[24px] ">
-                {p.description}
-              </div>
+        <tbody className="w-full">
+          {data.map((tableElement: TableElement) => (
+            <tr
+              className={`flex flex-row w-full items-center ${
+                tableElement.id % 2 === 0
+                  ? "bg-table-color"
+                  : "bg-primary-color"
+              }`}
+              key={tableElement.id}
+            >
+              <td className=" px-4 py-2 w-full mobile:text-xs text-center border-r border-r-white">
+                {tableElement.id}
+              </td>
+              <td className="px-4 py-2 w-full mobile:text-xs text-center border-r border-r-white">
+                {tableElement.title}
+              </td>
+              <td className="px-4 py-2 w-full mobile:text-xs text-center ">
+                {tableElement.description}
+              </td>
+              <td className="px-4 py-2 w-full mobile:text-xs text-center ">
+                {tableElement.status}
+              </td>
+              <td className="px-4 py-2 w-full mobile:text-xs text-center ">
+                {tableElement.auto}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
-}
+};
 
 export default Table;

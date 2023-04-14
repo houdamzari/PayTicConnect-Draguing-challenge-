@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Props } from "../../interfaces";
 const DropZone: React.FC<Props.DragZoneProps> = ({
   containerRef,
   children,

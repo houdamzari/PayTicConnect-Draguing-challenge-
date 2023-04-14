@@ -1,8 +1,8 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
-import { changeTitle } from "../../reducer/inputsSlice";
-import { States } from "../../interfaces";
+import { changeTitle } from "../reducer/inputsSlice";
+import { States } from "../interfaces";
 const TextInput: React.FC = () => {
   const dispatch = useDispatch();
   const { title } = useSelector((state: States.AppState) => state.inputs);

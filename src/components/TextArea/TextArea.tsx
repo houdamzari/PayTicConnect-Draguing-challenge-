@@ -2,7 +2,7 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { changeDescription } from "../../reducer/inputsSlice";
-import { States } from "../../../interfaces";
+import { States } from "../../interfaces";
 const TextArea: React.FC = () => {
   const dispatch = useDispatch();
   const { description } = useSelector((state: States.AppState) => state.inputs);
