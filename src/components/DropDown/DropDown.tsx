@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useDrag } from "react-dnd";
-import arrow from "../assets/arrow.svg";
+import arrow from "../../assets/arrow.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { changeDropdown } from "../../reducer/inputsSlice";
 import useOutsideClick from "../../hooks/useOutsideClick";

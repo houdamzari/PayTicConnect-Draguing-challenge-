@@ -1,10 +1,10 @@
 import React from "react";
 import { useDragDrop } from "../../hooks/useDragDrop";
-import {DropZone ,Button , Table , TextInput , TextArea , Checkbox, DropDown } from "../../components";
+import {DropZone ,Button , Table , TextInput , TextArea , CheckBox as Checkbox, DropDown } from "../../components";
 import { useSelector } from "react-redux";
 import { States } from "../../interfaces";
-import useRenderZone from "../hooks/useRenderZone";
-import useSaveData from "../hooks/useSaveData";
+import useRenderZone from "../../hooks/useRenderZone";
+import useSaveData from "../../hooks/useSaveData";
 const DragZones: React.FC = () => {
   const components: States.ComponentState[] = [
     { id: 1, el: <TextInput /> },

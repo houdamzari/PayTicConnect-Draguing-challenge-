@@ -2,7 +2,7 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { changeCheckbox } from "../../reducer/inputsSlice";
-import check from "../assets/check.svg";
+import check from "../../assets/check.svg";
 import { States } from "../../interfaces";
 const Checkbox: React.FC = () => {
   const dispatch = useDispatch();
