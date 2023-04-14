@@ -28,6 +28,7 @@ const Checkbox: React.FC = () => {
       >
         <input
           type="checkbox"
+          role={"checkbox"}
           checked={checkbox}
           onChange={() => dispatch(changeCheckbox())}
           className="appearance-none absolute z-[99999] w-full h-full top-0 left-0 cursor-pointer"

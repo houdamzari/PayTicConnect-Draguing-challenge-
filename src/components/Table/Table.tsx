@@ -3,7 +3,7 @@ import { Props, TableElement } from "../../interfaces";
 
 const Table: React.FC<Props.TableProps> = ({ data }) => {
   return (
-    <div className="w-full flex justify-center mobile:px-0 px-[50px] mb-14">
+    <div className="w-full flex justify-center mobile:px-0 px-[50px] mb-14 border-0">
       <table className="shadow-lg w-full mt-8">
         <thead className="w-full">
           <tr className="flex flex-row w-full rounded-t-[28px] bg-secondary-color">
