@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
-
 import { vi , describe , expect , it } from "vitest";
-import { fireEvent, render , screen} from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import useOutsideClick from "../useOutsideClick";
 import '@testing-library/jest-dom'
 const WrapperComponent = ({ callback }) => {
