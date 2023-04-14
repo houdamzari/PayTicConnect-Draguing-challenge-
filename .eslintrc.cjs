@@ -25,4 +25,5 @@ module.exports = {
       version: "detect",
     },
   },
+  ignorePatterns: ["*.d.ts"],
 };
