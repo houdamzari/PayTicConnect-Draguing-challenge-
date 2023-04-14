@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {DropZone ,Button , Table } from "../../components";
 import { useSelector } from "react-redux";
 import { useDragDrop } from "../../hooks/useDragDrop";
-
 const DragZones: React.FC = () => {
   const { title, description } = useSelector((state: any) => state.inputs);
   const { firstDrop, secondDrop, firstZoneComponent, secondZoneComponent } =

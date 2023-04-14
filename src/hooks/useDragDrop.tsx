@@ -1,24 +1,25 @@
-import React, { useState } from "react";
-import { TextInput, TextArea } from "../components";
 import { useDrop } from "react-dnd";
-
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addElementFirstZone,
+  addElementSecondZone,
+  removeElementFirstZone,
+  removeElementSecondZone,
+} from "../reducer/inputsSlice";
+import { States } from "../interfaces";
 export const useDragDrop = () => {
-  const [firstZoneComponent, setFirstZone] = useState([
-    { id: 1, el: <TextInput /> },
-    {
-      id: 2,
-      el: <TextArea />,
-    },
-  ]);
-  const [secondZoneComponent, setSecondZone] = useState<any>([]);
-  const [, firstDrop] = useDrop(() => ({
+  const dispatch = useDispatch();
+  const { firstZoneComponent, secondZoneComponent } = useSelector(
+    (state: States.AppState) => state.inputs
+  );
+  const [status, firstDrop] = useDrop(() => ({
     accept: "input",
     drop: (item: { id: number }) => handleSwitchRightToLeft(item.id),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   }));
-  const [, secondDrop] = useDrop(() => ({
+  const [status2, secondDrop] = useDrop(() => ({
     accept: "input",
     drop: (item: { id: number }) => handleSwitchRLeftToRight(item.id),
     collect: (monitor) => ({
@@ -26,27 +27,19 @@ export const useDragDrop = () => {
     }),
   }));
   const handleSwitchRightToLeft = (id: number) => {
-    console.log(id);
-    const removeComponent = secondZoneComponent.filter(
-      (el: { id: number; el: JSX.Element }) => el.id !== id
-    );
-    const addElement = secondZoneComponent.filter(
-      (el: { id: number; el: JSX.Element }) => el.id === id
-    );
-    setSecondZone(removeComponent);
-    setFirstZone([...firstZoneComponent, ...addElement]);
+    dispatch(addElementFirstZone([{ id: id }]));
+    dispatch(removeElementSecondZone(id));
   };
   const handleSwitchRLeftToRight = (id: number) => {
-    console.log(id);
-    const removeComponent = firstZoneComponent.filter(
-      (el: { id: number; el: JSX.Element }) => el.id !== id
-    );
-    const addElement = firstZoneComponent.filter(
-      (el: { id: number; el: JSX.Element }) => el.id === id
-    );
-
-    setFirstZone(removeComponent);
-    setSecondZone([...secondZoneComponent, ...addElement]);
+    dispatch(addElementSecondZone([{ id: id }]));
+    dispatch(removeElementFirstZone(id));
   };
-  return { firstDrop, secondDrop, firstZoneComponent, secondZoneComponent };
+  return {
+    status,
+    status2,
+    firstDrop,
+    secondDrop,
+    firstZoneComponent,
+    secondZoneComponent,
+  };
 };
