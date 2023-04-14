@@ -3,14 +3,12 @@
 
 # 📖 PayTicConnect Challenge ></a>
 
+## 🛠 Built With
 
-## 🛠 Built With <a name="built-with">
-    - React
-</a>
+- React
 
-<!-- GETTING STARTED -->
-
-## 💻 Getting Started <a name="getting-started"></a>
+<!-- GETTING STARTED
+## 💻 Getting Started
 
 To get a local copy up and running, follow these steps.
 
@@ -57,4 +55,3 @@ Example command:
   -- LinkedIn: [@houdamzari](https://www.linkedin.com/in/houda-mzari-2304401b1/)
 
   -- Portfolio [@houdamzari](https://portfolio-v2-61maf24ih-houdamzari.vercel.app/)
-  
