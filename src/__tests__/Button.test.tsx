@@ -1,16 +1,15 @@
 import React from "react";
-import { Props } from "../interfaces";
-const Button: React.FC<Props.ButtonProps> = ({ handleSave }) => {
-  return (
-    <div
-      onClick={() => handleSave()}
-      className="bg-secondary-color px-[58px] py-[15px] uppercase 
-      text-primary-color rounded-[20px] cursor-pointer hover:text-secondary-color 
-    border hover:border-secondary-color hover:bg-primary-color transition-all mobile:mt-8"
-    >
-      Save
-    </div>
-  );
-};
+import { test ,vi} from "vitest";
+import { render, fireEvent } from "@testing-library/react";
+import {Button} from "../components";
+import "@testing-library/jest-dom";
+test("Button should render and handle click event", () => {
+  const handleSave = vi.fn();
+  const { getByText } = render(<Button handleSave={handleSave} />);
 
-export default Button;
+  const buttonElement = getByText("Save");
+  expect(buttonElement).toBeInTheDocument();
+
+  fireEvent.click(buttonElement);
+  expect(handleSave).toHaveBeenCalledTimes(1);
+});
